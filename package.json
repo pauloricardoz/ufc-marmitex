@@ -1,0 +1,23 @@
+{
+  "name": "ufc-marmitex",
+  "version": "1.0.0",
+  "description": "<div align=\"center\">   <img alt=\"Logo do UFC\" src=\"/front-end/assets/logo-ufc.jpg\" width=\"300px\" /> </div>",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/carlanakajuni/ufc-marmitex.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/carlanakajuni/ufc-marmitex/issues"
+  },
+  "homepage": "https://github.com/carlanakajuni/ufc-marmitex#readme",
+  "dependencies": {
+    "create-react-app": "^4.0.3"
+  }
+}

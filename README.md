@@ -1,5 +1,5 @@
 <div align="center">
-  <img alt="Logo do UFC" src="/front-end/assets/logo-ufc.jpg" width="300px" />
+  <img alt="Logo do UFC" src="/logo-ufc.jpg" width="300px" />
 </div>
 
 <h1 align="center">PROJETO - UFC MARMITEX</h1>
