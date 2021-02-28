@@ -2,12 +2,14 @@ import './App.css';
 import LoginPage from './pages/login-page';
 import HomePage from './pages/home-page';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import logo from './assets/logo-ufc-small.png'
 
 function App() {
   return (
     <div className="main">
       <header className="header">
        {/*  <h1>UFC-Marmitex</h1> */}
+       <img src={logo} alt='logo UFC-Marmitex' className='logo'/>
       </header>
       <BrowserRouter>
         <Switch>
