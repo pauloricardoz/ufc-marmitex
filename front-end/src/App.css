@@ -6,10 +6,16 @@
 .main {
   background-color: #fa902f;
   height: 100vh;
+  display: -webkit-flex;
   display: flex;
+  -webkit-box-orient: vertical;
   flex-direction: column;
   overflow-y: auto;
 }
+
+_::-webkit-full-page-media, _:future, :root .safari_only {
+    display: block;
+  } 
 
 .footer {
   height: 5vh;
