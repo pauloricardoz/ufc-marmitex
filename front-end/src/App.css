@@ -8,6 +8,7 @@
   height: 100vh;
   display: flex;
   flex-direction: column;
+  overflow-y: auto;
 }
 
 .footer {
@@ -23,7 +24,8 @@
   padding: 0.2em;
   display: flex;
 }
-.logo{
+
+.logo {
   width: 20vw;
   background-color: white;
   border-radius: 100%;
@@ -78,4 +80,102 @@
   .login-page button {
     min-width: 50%;
   }
+}
+
+.register-page {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-between;
+}
+
+.register-page .user-form {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.register-page .user-form fieldset {
+  width: 80%;
+  padding: 0.5em;
+}
+
+.register-page .user-form fieldset select {
+  width: 100%;
+}
+
+.register-page .donation-items {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin: 1em 0;
+}
+
+.register-page .donation-item {
+  margin: 0.3em;
+}
+
+.register-page .donation-others-items {
+  display: flex;
+  justify-content: space-around;
+}
+
+.register-page .donation-others-items button {
+  flex-grow: 1;
+  margin: 0.8em
+}
+
+.register-page .back-next-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin: 2em;
+}
+
+.register-page .back-next-buttons button {
+  padding: 1em;
+  background: none;
+  border: none;
+  font-weight: 800;
+}
+
+.register-page-disposable {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.register-page-disposable .disposable-item {
+  display: flex;
+  margin: .8em;
+  justify-content: space-between;
+  font-size: large;
+}
+
+.register-page-disposable .disposable-item select {
+  font-size: inherit;
+}
+
+.register-page-disposable .disposable-item button {
+  font-size: inherit;
+  font-weight: bolder;
+  background: none;
+  border: none;
+}
+
+.register-page-disposable .disposable-item input {
+  width: 10%;
+  font-size: inherit;
+}
+
+.register-page-disposable .back-next-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin: 2em;
+}
+
+.register-page-disposable .back-next-buttons button {
+  padding: 1em;
+  background: none;
+  border: none;
+  font-weight: 800;
 }
