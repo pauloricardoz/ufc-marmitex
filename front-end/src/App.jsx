@@ -8,6 +8,7 @@ import RegisterPage from './pages/register-page';
 function App() {
   return (
     <div className="main">
+      <h1>Em desenvolvimento</h1>
       <header className="header">
        {/*  <h1>UFC-Marmitex</h1> */}
        <img src={logo} alt='logo UFC-Marmitex' className='logo'/>
