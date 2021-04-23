@@ -1,13 +1,19 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import Descatable from '../components/descataveis';
+import Descartable from '../components/descataveis/descartaveis';
+import PetFood from '../components/racao/racao';
 
 const options = ['Pessoa1', 'Pessoa2', 'Pessoa3'];
 export default function RegisterPage() {
   const history = useHistory();
   const [descart, setDescart] = useState(false);
+  const [petFood, setPetFood] = useState(false);
+  const comeBack = (func) => () => func((s) => !s);
   if (descart) {
-    return <Descatable descart={setDescart} />;
+    return <Descartable comeBack={comeBack(setDescart)} />;
+  }
+  if (petFood) {
+    return <PetFood comeBack={comeBack(setPetFood)} />;
   }
   return (
     <div className="register-page">
@@ -40,7 +46,7 @@ export default function RegisterPage() {
           </div>
           <div className="donation-others-items">
             <button onClick={() => setDescart((s) => !s)}>Descartavel</button>
-            <button>Ração</button>
+            <button onClick={() => setPetFood((s) => !s)}>Ração</button>
             <button>Outros</button>
           </div>
         </div>
