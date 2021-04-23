@@ -4,6 +4,7 @@ import HomePage from './pages/home-page';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import logo from './assets/logo-ufc-small.png'
 import RegisterPage from './pages/register-page';
+import RegisterDonor from './pages/register-Donor';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       </header>
       <BrowserRouter>
         <Switch>
+          <Route path="/register-donor" component={RegisterDonor} />
           <Route path="/register" component={RegisterPage} />
           <Route path="/home" component={HomePage} />
           <Route path="/" component={LoginPage} />

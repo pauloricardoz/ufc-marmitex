@@ -4,14 +4,17 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import DonationProvider from './provider/providerDonation';
+import UserProvider from './provider/userDonation';
 
 ReactDOM.render(
   <React.StrictMode>
-    <DonationProvider>
-      <App />
-    </DonationProvider>
+    <UserProvider>
+      <DonationProvider>
+        <App />
+      </DonationProvider>
+    </UserProvider>
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById('root'),
 );
 
 // If you want to start measuring performance in your app, pass a function

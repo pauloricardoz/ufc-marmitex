@@ -1,10 +1,20 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import Descartable from '../components/descataveis/descartaveis';
 import PetFood from '../components/racao/racao';
+import donationContext from '../context/contextDonation';
+import userContext from '../context/contextUser';
 
-const options = ['Pessoa1', 'Pessoa2', 'Pessoa3'];
 export default function RegisterPage() {
+  const {
+    marmitex,
+    changeMarmitex,
+    bebida,
+    changeBebida,
+    sobremesa,
+    changeSobremesa,
+  } = useContext(donationContext);
+  const { donorsList, donorSelected } = useContext(userContext);
   const history = useHistory();
   const [descart, setDescart] = useState(false);
   const [petFood, setPetFood] = useState(false);
@@ -22,27 +32,49 @@ export default function RegisterPage() {
           <fieldset>
             {/* input type search */}
             <select name="" id="">
-              {options.map((option) => (
-                <option value={option}>{option}</option>
+              {donorsList.map(({ nickname: option }) => (
+                <option value={option} selected={donorSelected === option}>
+                  {option}
+                </option>
               ))}
             </select>
           </fieldset>
           <fieldset>
-            <button>Cadastrar pessoa doadora</button>
+            <button onClick={() => history.push('/register-donor')}>
+              Cadastrar pessoa doadora
+            </button>
           </fieldset>
         </form>
         <div className="donation-items">
           <div className="donation-item">
             <span htmlFor="marmitex">Marmitex:</span>
-            <input name="marmitex" type="number" />
+            <input
+              name="marmitex"
+              type="number"
+              min="0"
+              onChange={changeMarmitex}
+              value={marmitex}
+            />
           </div>
           <div className="donation-item">
             <span htmlFor="bebida">Bebida:</span>
-            <input name="bebida" type="number" />
+            <input
+              name="bebida"
+              type="number"
+              min="0"
+              onChange={changeBebida}
+              value={bebida}
+            />
           </div>
           <div className="donation-item">
             <span htmlFor="sobremesa">Sobremesa:</span>
-            <input name="sobremesa" type="number" />
+            <input
+              name="sobremesa"
+              type="number"
+              min="0"
+              value={sobremesa}
+              onChange={changeSobremesa}
+            />
           </div>
           <div className="donation-others-items">
             <button onClick={() => setDescart((s) => !s)}>Descartavel</button>
