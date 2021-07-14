@@ -14,8 +14,8 @@
 }
 
 _::-webkit-full-page-media, _:future, :root .safari_only {
-    display: block;
-  } 
+  display: block;
+}
 
 .footer {
   height: 5vh;
@@ -184,4 +184,22 @@ _::-webkit-full-page-media, _:future, :root .safari_only {
   background: none;
   border: none;
   font-weight: 800;
+}
+
+.register-donor-page {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-between;
+}
+
+.register-donor-page .user-form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.register-donor-page .displayErrors input:invalid {
+  border-color: red;
 }
