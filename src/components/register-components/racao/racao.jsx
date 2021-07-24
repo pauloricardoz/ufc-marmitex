@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
-import donationContext from '../../context/contextDonation';
+import donationContext from '../../../context/contextDonation';
 import ItemRacao from './item-racao';
-import ItemRacaoChoose from './item-racao-choose';
+import ItemChoose from '../item-choose';
 
 export default function PetFood({ comeBack }) {
   const { racaos, setRacaos } = useContext(donationContext);
@@ -10,13 +10,18 @@ export default function PetFood({ comeBack }) {
       <div>
         <h1>Descartavel</h1>
         {racaos.map((racao) => (
-          <ItemRacaoChoose key={ racao } donation={ racao } />
+          <ItemChoose
+            key={ racao }
+            handlerDonation={ setRacaos }
+            donation={ racao }
+          />
+
         ))}
         <ItemRacao />
       </div>
 
       <div className="back-next-buttons">
-        <button onClick={ comeBack }>Back</button>
+        <button type="button" onClick={ comeBack }>Back</button>
         {/* <button>Next</button> */}
       </div>
     </div>

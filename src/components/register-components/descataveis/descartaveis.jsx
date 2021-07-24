@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
-import donationContext from '../../context/contextDonation';
+import donationContext from '../../../context/contextDonation';
 import ItemDescartavel from './item-descartavel';
-import ItemDescartavelChoose from './item-descartavel-choose';
+import ItemChoose from '../item-choose';
 
 export default function Descartable({ comeBack }) {
   const { disposables, setDisposables } = useContext(donationContext);
@@ -10,9 +10,9 @@ export default function Descartable({ comeBack }) {
       <div>
         <h1>Descartavel</h1>
         {disposables.map((donation) => (
-          <ItemDescartavelChoose
+          <ItemChoose
             key={ donation }
-            setDonations={ setDisposables }
+            handlerDonation={ setDisposables }
             donation={ donation }
           />
         ))}

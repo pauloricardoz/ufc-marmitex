@@ -90,7 +90,7 @@ _:future,
 
 .register-page .user-form {
   display: flex;
-    justify-content: center;
+  justify-content: center;
 }
 
 .register-page .user-form fieldset {
@@ -103,7 +103,6 @@ _:future,
 }
 .register-page .user-form button {
   margin: 0 1em;
-
 }
 
 .register-page .donation-items {
@@ -164,6 +163,19 @@ _:future,
   margin: 0.8em;
   justify-content: space-between;
   font-size: large;
+}
+
+.register-page-disposable .disposable-item .disposable-item-name {
+  width: 50%;
+}
+.register-page-disposable .disposable-item .disposable-item-quantity {
+  width: 10%;
+}
+.register-page-disposable .disposable-item .disposable-item-unit {
+  width: 15%;
+}
+.register-page-disposable .disposable-item .disposable-item-buttom {
+  width: 10%;
 }
 
 .register-page-disposable .disposable-item select {

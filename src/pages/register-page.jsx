@@ -2,8 +2,8 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useContext, useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import Descartable from '../components/descataveis/descartaveis';
-import PetFood from '../components/racao/racao';
+import Descartable from '../components/register-components/descataveis/descartaveis';
+import PetFood from '../components/register-components/racao/racao';
 import DonationItemFood from '../components/register-components/donationItemFood';
 import donationContext from '../context/contextDonation';
 import userContext from '../context/contextUser';
@@ -77,7 +77,7 @@ export default function RegisterPage() {
               Descartavel
             </button>
             <button type="button" onClick={ () => setPetFood((s) => !s) }>Ração</button>
-            <button type="button">Outros</button>
+            <button type="button" disabled>Outros</button>
           </div>
         </div>
       </div>
