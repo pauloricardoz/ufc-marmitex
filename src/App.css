@@ -13,7 +13,9 @@
   overflow-y: auto;
 }
 
-_::-webkit-full-page-media, _:future, :root .safari_only {
+_::-webkit-full-page-media,
+_:future,
+:root .safari_only {
   display: block;
 }
 
@@ -47,7 +49,7 @@ _::-webkit-full-page-media, _:future, :root .safari_only {
 }
 
 .login-page p {
-  margin: 10px
+  margin: 10px;
 }
 
 .login-page button {
@@ -68,7 +70,7 @@ _::-webkit-full-page-media, _:future, :root .safari_only {
 }
 
 .home-page p {
-  margin: 10px
+  margin: 10px;
 }
 
 .home-page button {
@@ -79,14 +81,7 @@ _::-webkit-full-page-media, _:future, :root .safari_only {
   min-width: 25%;
 }
 
-@media only screen and (max-width:640px) {
-  .home-page button {
-    min-width: 50%;
-  }
-  .login-page button {
-    min-width: 50%;
-  }
-}
+
 
 .register-page {
   display: flex;
@@ -127,7 +122,7 @@ _::-webkit-full-page-media, _:future, :root .safari_only {
 
 .register-page .donation-others-items button {
   flex-grow: 1;
-  margin: 0.8em
+  margin: 0.8em;
 }
 
 .register-page .back-next-buttons {
@@ -152,7 +147,7 @@ _::-webkit-full-page-media, _:future, :root .safari_only {
 
 .register-page-disposable .disposable-item {
   display: flex;
-  margin: .8em;
+  margin: 0.8em;
   justify-content: space-between;
   font-size: large;
 }
@@ -202,4 +197,32 @@ _::-webkit-full-page-media, _:future, :root .safari_only {
 
 .register-donor-page .displayErrors input:invalid {
   border-color: red;
+}
+
+.register-donor-page .user-form .user-form-options {
+  display: inline-flex;
+  justify-content: end;
+  flex-wrap: wrap;
+}
+.register-donor-page .user-form [type=submit]{
+  margin-top: 1em;
+  width: 50%;
+  align-self: center;
+}
+
+@media only screen and (max-width: 731px) {
+  .home-page button {
+    min-width: 50%;
+  }
+  .login-page button {
+    min-width: 50%;
+  }
+  .register-donor-page .user-form .user-form-options{
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+  }
+  .register-donor-page .user-form .user-form-options label input {
+    width: 100%;
+  }
 }

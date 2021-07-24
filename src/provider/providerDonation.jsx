@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import donationContext from '../context/contextDonation';
 
 export default function DonationProvider({ children }) {
@@ -22,5 +23,11 @@ export default function DonationProvider({ children }) {
     sobremesa,
     changeSobremesa,
   };
-  return <donationContext.Provider value={context}>{children}</donationContext.Provider>;
+  return (
+    <donationContext.Provider value={ context }>
+      {children}
+    </donationContext.Provider>);
 }
+DonationProvider.propTypes = {
+  children: PropTypes.node.isRequired,
+};

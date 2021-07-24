@@ -20,10 +20,10 @@ export default function RegisterPage() {
   const [petFood, setPetFood] = useState(false);
   const comeBack = (func) => () => func((s) => !s);
   if (descart) {
-    return <Descartable comeBack={comeBack(setDescart)} />;
+    return <Descartable comeBack={ comeBack(setDescart) } />;
   }
   if (petFood) {
-    return <PetFood comeBack={comeBack(setPetFood)} />;
+    return <PetFood comeBack={ comeBack(setPetFood) } />;
   }
   return (
     <div className="register-page">
@@ -33,14 +33,21 @@ export default function RegisterPage() {
             {/* input type search */}
             <select name="" id="">
               {donorsList.map(({ nickname: option }) => (
-                <option value={option} selected={donorSelected === option}>
+                <option
+                  key={ option }
+                  value={ option }
+                  selected={ donorSelected === option }
+                >
                   {option}
                 </option>
               ))}
             </select>
           </fieldset>
           <fieldset>
-            <button onClick={() => history.push('/register-donor')}>
+            <button
+              type="button"
+              onClick={ () => history.push('/register-donor') }
+            >
               Cadastrar pessoa doadora
             </button>
           </fieldset>
@@ -52,8 +59,8 @@ export default function RegisterPage() {
               name="marmitex"
               type="number"
               min="0"
-              onChange={changeMarmitex}
-              value={marmitex}
+              onChange={ changeMarmitex }
+              value={ marmitex }
             />
           </div>
           <div className="donation-item">
@@ -62,8 +69,8 @@ export default function RegisterPage() {
               name="bebida"
               type="number"
               min="0"
-              onChange={changeBebida}
-              value={bebida}
+              onChange={ changeBebida }
+              value={ bebida }
             />
           </div>
           <div className="donation-item">
@@ -72,20 +79,25 @@ export default function RegisterPage() {
               name="sobremesa"
               type="number"
               min="0"
-              value={sobremesa}
-              onChange={changeSobremesa}
+              value={ sobremesa }
+              onChange={ changeSobremesa }
             />
           </div>
           <div className="donation-others-items">
-            <button onClick={() => setDescart((s) => !s)}>Descartavel</button>
-            <button onClick={() => setPetFood((s) => !s)}>Ração</button>
-            <button>Outros</button>
+            <button
+              type="button"
+              onClick={ () => setDescart((s) => !s) }
+            >
+              Descartavel
+            </button>
+            <button type="button" onClick={ () => setPetFood((s) => !s) }>Ração</button>
+            <button type="button">Outros</button>
           </div>
         </div>
       </div>
       <div className="back-next-buttons">
-        <button onClick={() => history.push('/home')}>Back</button>
-        <button>Next</button>
+        <button type="button" onClick={ () => history.push('/home') }>Back</button>
+        <button type="button">Next</button>
       </div>
     </div>
   );

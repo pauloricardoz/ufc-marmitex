@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import userContext from '../context/contextUser';
 
 export default function UserProvider({ children }) {
@@ -18,5 +19,9 @@ export default function UserProvider({ children }) {
     donorSelected,
     setDonorSelected,
   };
-  return <userContext.Provider value={context}>{children}</userContext.Provider>;
+  return <userContext.Provider value={ context }>{children}</userContext.Provider>;
 }
+
+UserProvider.propTypes = {
+  children: PropTypes.node.isRequired,
+};
