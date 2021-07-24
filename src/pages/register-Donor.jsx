@@ -57,6 +57,7 @@ export default function RegisterDonor() {
             <br />
             <input name="nickname" onChange={ handleInput } required />
           </label>
+          {/* eslint-disable-next-line */}
           <label htmlFor="phone">
             Telefone*:
             <br />

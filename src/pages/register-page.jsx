@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import Descartable from '../components/descataveis/descartaveis';
 import PetFood from '../components/racao/racao';
+import DonationItemFood from '../components/register-components/donationItemFood';
 import donationContext from '../context/contextDonation';
 import userContext from '../context/contextUser';
 
@@ -53,36 +54,24 @@ export default function RegisterPage() {
           </fieldset>
         </form>
         <div className="donation-items">
-          <div className="donation-item">
-            <span htmlFor="marmitex">Marmitex:</span>
-            <input
-              name="marmitex"
-              type="number"
-              min="0"
-              onChange={ changeMarmitex }
-              value={ marmitex }
+          <section className="food">
+            <DonationItemFood
+              text="Marmitex"
+              stateHandler={ changeMarmitex }
+              state={ marmitex }
             />
-          </div>
-          <div className="donation-item">
-            <span htmlFor="bebida">Bebida:</span>
-            <input
-              name="bebida"
-              type="number"
-              min="0"
-              onChange={ changeBebida }
-              value={ bebida }
+            <DonationItemFood
+              text="Bebida"
+              stateHandler={ changeBebida }
+              state={ bebida }
             />
-          </div>
-          <div className="donation-item">
-            <span htmlFor="sobremesa">Sobremesa:</span>
-            <input
-              name="sobremesa"
-              type="number"
-              min="0"
-              value={ sobremesa }
-              onChange={ changeSobremesa }
+            <DonationItemFood
+              text="Sobremesa"
+              stateHandler={ changeSobremesa }
+              state={ sobremesa }
             />
-          </div>
+          </section>
+
           <div className="donation-others-items">
             <button
               type="button"
