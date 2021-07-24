@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import React, { useContext } from 'react';
 import donationContext from '../../context/contextDonation';
 
 export default function ItemRacaoChoose(props) {
@@ -11,7 +11,7 @@ export default function ItemRacaoChoose(props) {
       </span>
       <span>{donation.quantity}</span>
       <span>{donation.unit}</span>
-      <button onClick={() => setRacaos((s) => s.filter((e) => e !== donation))}>
+      <button onClick={ () => setRacaos((s) => s.filter((e) => e !== donation)) }>
         X
       </button>
     </div>

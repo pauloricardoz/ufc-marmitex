@@ -1,0 +1,10 @@
+{
+  "root": true,
+  "extends": ["trybe-frontend"],
+  "rules": {
+    
+    "arrow-body-style": "off",
+    "react/react-in-jsx-scope":"warn",
+    "prefer-arrow-callback": "off"
+  }
+}

@@ -10,13 +10,17 @@ export default function Descartable({ comeBack }) {
       <div>
         <h1>Descartavel</h1>
         {disposables.map((donation) => (
-          <ItemDescartavelChoose setDonations={setDisposables} donation={donation} />
+          <ItemDescartavelChoose
+            key={ donation }
+            setDonations={ setDisposables }
+            donation={ donation }
+          />
         ))}
         <ItemDescartavel />
       </div>
 
       <div className="back-next-buttons">
-        <button onClick={comeBack}>Back</button>
+        <button type="button" onClick={ comeBack }>Back</button>
         {/* <button>Next</button> */}
       </div>
     </div>

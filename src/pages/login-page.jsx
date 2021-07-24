@@ -9,7 +9,7 @@ export default function LoginPage() {
       <input type="text" />
       <p>Seu PIN (:</p>
       <input type="password" />
-      <button type="button" onClick={() => history.push('/home')}>
+      <button type="button" onClick={ () => history.push('/home') }>
         ENTRAR
       </button>
     </div>

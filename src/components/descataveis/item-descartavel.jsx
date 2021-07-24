@@ -1,5 +1,6 @@
-import { useContext, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import donationContext from '../../context/contextDonation';
+
 const items = [
   'Garfos',
   'Garrafinha Alcool Gel',
@@ -25,9 +26,9 @@ export default function ItemDescartavel() {
   };
   return (
     <div className="disposable-item">
-      <select name="type" id="" onChange={handleInput} value={item.type}>
-        {items.map((item) => (
-          <option value={item}>{item}</option>
+      <select name="type" id="" onChange={ handleInput } value={ item.type }>
+        {items.map((itemOption) => (
+          <option key={ itemOption } value={ itemOption }>{itemOption}</option>
         ))}
       </select>
       <input
@@ -35,15 +36,15 @@ export default function ItemDescartavel() {
         step="1"
         min="0"
         name="quantity"
-        onChange={handleInput}
-        value={item.quantity}
+        onChange={ handleInput }
+        value={ item.quantity }
       />
-      <select name="unit" id="" onChange={handleInput} value={item.unit}>
+      <select name="unit" id="" onChange={ handleInput } value={ item.unit }>
         {type.map((e) => (
-          <option value={e}>{e}</option>
+          <option key={ e } value={ e }>{e}</option>
         ))}
       </select>
-      <button onClick={handleAdd}>OK</button>
+      <button onClick={ handleAdd }>OK</button>
     </div>
   );
 }

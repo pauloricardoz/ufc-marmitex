@@ -10,13 +10,13 @@ export default function PetFood({ comeBack }) {
       <div>
         <h1>Descartavel</h1>
         {racaos.map((racao) => (
-          <ItemRacaoChoose donation={racao} />
+          <ItemRacaoChoose key={ racao } donation={ racao } />
         ))}
         <ItemRacao />
       </div>
 
       <div className="back-next-buttons">
-        <button onClick={comeBack}>Back</button>
+        <button onClick={ comeBack }>Back</button>
         {/* <button>Next</button> */}
       </div>
     </div>
