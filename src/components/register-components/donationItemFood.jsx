@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 function DonationItemFood({
-  text = '', type = 'number', min = '0', stateHandler, state,
+  text, type, min, stateHandler, state,
 }) {
   return (
     <div className="donation-item">

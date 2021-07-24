@@ -81,8 +81,6 @@ _:future,
   min-width: 25%;
 }
 
-
-
 .register-page {
   display: flex;
   flex-direction: column;
@@ -91,8 +89,8 @@ _:future,
 }
 
 .register-page .user-form {
-  width: 100%;
-  margin: 0 auto;
+  display: flex;
+    justify-content: center;
 }
 
 .register-page .user-form fieldset {
@@ -100,8 +98,12 @@ _:future,
   padding: 0.5em;
 }
 
-.register-page .user-form fieldset select {
-  width: 100%;
+.register-page .user-form select {
+  min-width: 60%;
+}
+.register-page .user-form button {
+  margin: 0 1em;
+
 }
 
 .register-page .donation-items {
@@ -110,6 +112,18 @@ _:future,
   flex-direction: column;
   margin: 1em 0;
 }
+.register-page .donation-items .food {
+  display: flex;
+  justify-content: space-evenly;
+}
+.register-page .donation-items .food .donation-item {
+  text-align: center;
+}
+.register-page .donation-items .food .donation-item input {
+  width: 2em;
+  text-align: center;
+  margin: 0 10px;
+}
 
 .register-page .food .donation-item {
   margin: 0.3em;
@@ -117,7 +131,7 @@ _:future,
 
 .register-page .donation-others-items {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
 }
 
 .register-page .donation-others-items button {
@@ -204,7 +218,7 @@ _:future,
   justify-content: end;
   flex-wrap: wrap;
 }
-.register-donor-page .user-form [type=submit]{
+.register-donor-page .user-form [type='submit'] {
   margin-top: 1em;
   width: 50%;
   align-self: center;
@@ -217,7 +231,7 @@ _:future,
   .login-page button {
     min-width: 50%;
   }
-  .register-donor-page .user-form .user-form-options{
+  .register-donor-page .user-form .user-form-options {
     display: flex;
     flex-direction: column;
     justify-content: end;

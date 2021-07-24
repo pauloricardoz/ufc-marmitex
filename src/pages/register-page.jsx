@@ -1,3 +1,5 @@
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useContext, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import Descartable from '../components/descataveis/descartaveis';
@@ -30,28 +32,23 @@ export default function RegisterPage() {
     <div className="register-page">
       <div>
         <form className="user-form">
-          <fieldset>
-            {/* input type search */}
-            <select name="" id="">
-              {donorsList.map(({ nickname: option }) => (
-                <option
-                  key={ option }
-                  value={ option }
-                  selected={ donorSelected === option }
-                >
-                  {option}
-                </option>
-              ))}
-            </select>
-          </fieldset>
-          <fieldset>
-            <button
-              type="button"
-              onClick={ () => history.push('/register-donor') }
-            >
-              Cadastrar pessoa doadora
-            </button>
-          </fieldset>
+          <select name="" id="">
+            {donorsList.map(({ nickname: option }) => (
+              <option
+                key={ option }
+                value={ option }
+                selected={ donorSelected === option }
+              >
+                {option}
+              </option>
+            ))}
+          </select>
+          <button
+            type="button"
+            onClick={ () => history.push('/register-donor') }
+          >
+            <FontAwesomeIcon icon={ faPlus } />
+          </button>
         </form>
         <div className="donation-items">
           <section className="food">
