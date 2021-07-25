@@ -6,9 +6,12 @@ export default function HomePage() {
   const nome = 'Carla';
   return (
     <div className="home-page">
-      <p>Olá, {nome}</p>
+      <p>
+        Olá,
+        {nome}
+      </p>
       <p>O que deseja fazer?</p>
-      <button type="button" onClick={() => history.push('/register')}>
+      <button type="button" onClick={ () => history.push('/register') }>
         Registrar doação
       </button>
       <button type="button">Escala</button>

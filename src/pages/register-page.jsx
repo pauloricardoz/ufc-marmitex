@@ -1,53 +1,132 @@
-import React, { useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import Descatable from '../components/descataveis';
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Descartable from '../components/register-components/descataveis/descartaveis';
+import PetFood from '../components/register-components/racao/racao';
+import DonationItemFood from '../components/register-components/donationItemFood';
+import donationContext from '../context/contextDonation';
+import userContext from '../context/contextUser';
 
-const options = ['Pessoa1', 'Pessoa2', 'Pessoa3'];
 export default function RegisterPage() {
+  const {
+    marmitex,
+    changeMarmitex,
+    bebida,
+    changeBebida,
+    sobremesa,
+    changeSobremesa,
+    disposables,
+    racaos,
+  } = useContext(donationContext);
+  const { donorsList, donorSelected, setDonorSelected } = useContext(userContext);
   const history = useHistory();
   const [descart, setDescart] = useState(false);
+  const [petFood, setPetFood] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [disableNext, setDisableNext] = useState(true);
+  useEffect(() => {
+    // API Request HERE to set donorsList
+    if (!donorSelected.nickname && donorsList[0]) {
+      setDonorSelected({ nickname: donorsList[0].nickname });
+    } else {
+      setDonorSelected({ nickname: 'Anônimo' });
+    }
+    // eslint-disable-next-line
+  }, []);
+  useEffect(() => {
+    if (donorsList.length) {
+      setLoading(false);
+      setDonorSelected({ nickname: donorsList[0].nickname });
+    }
+    // eslint-disable-next-line
+  }, [donorsList]);
+  useEffect(() => {
+    if (!(marmitex
+      || bebida
+      || sobremesa
+      || (disposables.every(({ quantity }) => quantity) && disposables.length)
+      || (racaos.every(({ quantity }) => quantity) && racaos.length))
+    ) {
+      setDisableNext(true);
+    } else {
+      setDisableNext(false);
+    }
+  }, [marmitex, bebida, sobremesa, disposables, racaos]);
+  if (loading) return <h1>Carregando...</h1>;
+  const comeBack = (func) => () => func((s) => !s);
   if (descart) {
-    return <Descatable descart={setDescart} />;
+    return <Descartable comeBack={ comeBack(setDescart) } />;
+  }
+  if (petFood) {
+    return <PetFood comeBack={ comeBack(setPetFood) } />;
   }
   return (
     <div className="register-page">
       <div>
         <form className="user-form">
-          <fieldset>
-            {/* input type search */}
-            <select name="" id="">
-              {options.map((option) => (
-                <option value={option}>{option}</option>
-              ))}
-            </select>
-          </fieldset>
-          <fieldset>
-            <button>Cadastrar pessoa doadora</button>
-          </fieldset>
+          <select
+            name=""
+            id=""
+            defaultValue={ donorSelected }
+            onChange={ (e) => setDonorSelected(e.target.value) }
+          >
+            {donorsList.map(({ nickname: option }) => (
+              <option
+                key={ option }
+                value={ option }
+              >
+                {option}
+              </option>
+            ))}
+          </select>
+          <button
+            type="button"
+            onClick={ () => history.push('/register-donor') }
+          >
+            <FontAwesomeIcon icon={ faPlus } />
+          </button>
         </form>
         <div className="donation-items">
-          <div className="donation-item">
-            <span htmlFor="marmitex">Marmitex:</span>
-            <input name="marmitex" type="number" />
-          </div>
-          <div className="donation-item">
-            <span htmlFor="bebida">Bebida:</span>
-            <input name="bebida" type="number" />
-          </div>
-          <div className="donation-item">
-            <span htmlFor="sobremesa">Sobremesa:</span>
-            <input name="sobremesa" type="number" />
-          </div>
+          <section className="food">
+            <DonationItemFood
+              text="Marmitex"
+              stateHandler={ changeMarmitex }
+              state={ marmitex }
+            />
+            <DonationItemFood
+              text="Bebida"
+              stateHandler={ changeBebida }
+              state={ bebida }
+            />
+            <DonationItemFood
+              text="Sobremesa"
+              stateHandler={ changeSobremesa }
+              state={ sobremesa }
+            />
+          </section>
+
           <div className="donation-others-items">
-            <button onClick={() => setDescart((s) => !s)}>Descartavel</button>
-            <button>Ração</button>
-            <button>Outros</button>
+            <button
+              type="button"
+              onClick={ () => setDescart((s) => !s) }
+            >
+              Descartavel
+            </button>
+            <button type="button" onClick={ () => setPetFood((s) => !s) }>Ração</button>
+            <button type="button" disabled>Outros</button>
           </div>
         </div>
       </div>
       <div className="back-next-buttons">
-        <button onClick={() => history.push('/home')}>Back</button>
-        <button>Next</button>
+        <button type="button" onClick={ () => history.push('/home') }>Back</button>
+        <button
+          type="button"
+          onClick={ () => history.push('/register-finish') }
+          disabled={ disableNext }
+        >
+          Next
+        </button>
       </div>
     </div>
   );

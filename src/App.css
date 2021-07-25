@@ -3,6 +3,19 @@
   padding: 0;
 }
 
+@keyframes go-back {
+  from {
+    transform: translateX(80vw);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+
 .main {
   background-color: #fa902f;
   height: 100vh;
@@ -13,9 +26,11 @@
   overflow-y: auto;
 }
 
-_::-webkit-full-page-media, _:future, :root .safari_only {
-    display: block;
-  } 
+_::-webkit-full-page-media,
+_:future,
+:root .safari_only {
+  display: block;
+}
 
 .footer {
   height: 5vh;
@@ -35,6 +50,7 @@ _::-webkit-full-page-media, _:future, :root .safari_only {
   width: 20vw;
   background-color: white;
   border-radius: 100%;
+  animation: spin 4s infinite linear;
 }
 
 .login-page {
@@ -47,7 +63,7 @@ _::-webkit-full-page-media, _:future, :root .safari_only {
 }
 
 .login-page p {
-  margin: 10px
+  margin: 10px;
 }
 
 .login-page button {
@@ -68,7 +84,7 @@ _::-webkit-full-page-media, _:future, :root .safari_only {
 }
 
 .home-page p {
-  margin: 10px
+  margin: 10px;
 }
 
 .home-page button {
@@ -79,15 +95,6 @@ _::-webkit-full-page-media, _:future, :root .safari_only {
   min-width: 25%;
 }
 
-@media only screen and (max-width:640px) {
-  .home-page button {
-    min-width: 50%;
-  }
-  .login-page button {
-    min-width: 50%;
-  }
-}
-
 .register-page {
   display: flex;
   flex-direction: column;
@@ -96,8 +103,8 @@ _::-webkit-full-page-media, _:future, :root .safari_only {
 }
 
 .register-page .user-form {
-  width: 100%;
-  margin: 0 auto;
+  display: flex;
+  justify-content: center;
 }
 
 .register-page .user-form fieldset {
@@ -105,8 +112,11 @@ _::-webkit-full-page-media, _:future, :root .safari_only {
   padding: 0.5em;
 }
 
-.register-page .user-form fieldset select {
-  width: 100%;
+.register-page .user-form select {
+  min-width: 60%;
+}
+.register-page .user-form button {
+  margin: 0 1em;
 }
 
 .register-page .donation-items {
@@ -115,28 +125,40 @@ _::-webkit-full-page-media, _:future, :root .safari_only {
   flex-direction: column;
   margin: 1em 0;
 }
+.register-page .donation-items .food {
+  display: flex;
+  justify-content: space-evenly;
+}
+.register-page .donation-items .food .donation-item {
+  text-align: center;
+}
+.register-page .donation-items .food .donation-item input {
+  width: 2em;
+  text-align: center;
+  margin: 0 10px;
+}
 
-.register-page .donation-item {
+.register-page .food .donation-item {
   margin: 0.3em;
 }
 
 .register-page .donation-others-items {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
 }
 
 .register-page .donation-others-items button {
   flex-grow: 1;
-  margin: 0.8em
+  margin: 0.8em;
 }
 
-.register-page .back-next-buttons {
+.back-next-buttons {
   display: flex;
   justify-content: space-between;
   margin: 2em;
 }
 
-.register-page .back-next-buttons button {
+.back-next-buttons button {
   padding: 1em;
   background: none;
   border: none;
@@ -152,9 +174,22 @@ _::-webkit-full-page-media, _:future, :root .safari_only {
 
 .register-page-disposable .disposable-item {
   display: flex;
-  margin: .8em;
+  margin: 0.8em;
   justify-content: space-between;
   font-size: large;
+}
+
+.register-page-disposable .disposable-item .disposable-item-name {
+  width: 50%;
+}
+.register-page-disposable .disposable-item .disposable-item-quantity {
+  width: 10%;
+}
+.register-page-disposable .disposable-item .disposable-item-unit {
+  width: 15%;
+}
+.register-page-disposable .disposable-item .disposable-item-buttom {
+  width: 10%;
 }
 
 .register-page-disposable .disposable-item select {
@@ -184,4 +219,65 @@ _::-webkit-full-page-media, _:future, :root .safari_only {
   background: none;
   border: none;
   font-weight: 800;
+}
+
+.register-donor-page {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-between;
+}
+
+.register-donor-page .user-form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.register-donor-page .displayErrors input:invalid {
+  border-color: red;
+}
+
+.register-donor-page .user-form .user-form-options {
+  display: inline-flex;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+}
+.register-donor-page .user-form [type='submit'] {
+  margin-top: 1em;
+  width: 50%;
+  align-self: center;
+}
+.register-finish-page{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-between;
+}
+.register-finish-page .resume-items .resume-item{
+  display: flex;
+    justify-content: space-between;
+}
+.register-finish-page .resume-items .resume-item .resume-item-quantity{
+  width: 30%;
+  display: flex;
+  justify-content: space-around;
+}
+
+@media only screen and (max-width: 731px) {
+  .home-page button {
+    min-width: 50%;
+  }
+  .login-page button {
+    min-width: 50%;
+  }
+  .register-donor-page .user-form .user-form-options {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+  .register-donor-page .user-form .user-form-options label input {
+    width: 100%;
+  }
 }
