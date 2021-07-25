@@ -7,6 +7,7 @@ import logo from './assets/logo-ufc-small.png';
 import RegisterPage from './pages/register-page';
 import RegisterDonor from './pages/register-Donor';
 import registerPageFinish from './pages/register-finish-page';
+import Schedule from './pages/Schedule';
 
 function App() {
   return (
