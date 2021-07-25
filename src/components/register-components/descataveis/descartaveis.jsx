@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import PropTypes from 'prop-types';
 import donationContext from '../../../context/contextDonation';
 import ItemDescartavel from './item-descartavel';
 import ItemChoose from '../item-choose';
@@ -11,7 +12,7 @@ export default function Descartable({ comeBack }) {
         <h1>Descartavel</h1>
         {disposables.map((donation) => (
           <ItemChoose
-            key={ donation }
+            key={ `${donation.type}${donation.quantity}` }
             handlerDonation={ setDisposables }
             donation={ donation }
           />
@@ -26,3 +27,6 @@ export default function Descartable({ comeBack }) {
     </div>
   );
 }
+Descartable.propTypes = {
+  comeBack: PropTypes.func.isRequired,
+};

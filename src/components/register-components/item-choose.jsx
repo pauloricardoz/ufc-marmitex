@@ -1,6 +1,5 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import donationContext from '../../context/contextDonation';
 
 export default function ItemChoose(props) {
   const { donation, handlerDonation } = props;

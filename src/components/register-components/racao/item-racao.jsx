@@ -8,9 +8,13 @@ export default function ItemRacao() {
   const INITIAL_STATE = { type: items[0], unit: type[0], quantity: '' };
   const [item, setItem] = useState({ ...INITIAL_STATE });
 
-  const handleInput = (e) => {
+  const handleType = (e) => {
     const { name, value } = e.target;
-    setItem((s) => ({ ...s, [name]: value }));
+    setItem((s) => ({ ...s, [name]: (value) }));
+  };
+  const handleNumber = (e) => {
+    const { name, value } = e.target;
+    setItem((s) => ({ ...s, [name]: Number(value) }));
   };
 
   const handleAdd = () => {
@@ -21,7 +25,7 @@ export default function ItemRacao() {
 
   return (
     <div className="disposable-item">
-      <select name="type" id="" onChange={ handleInput } value={ item.type }>
+      <select name="type" id="" onChange={ handleType } value={ item.type }>
         {items.map((itemOption) => (
           <option key={ itemOption } value={ itemOption }>{itemOption}</option>
         ))}
@@ -31,10 +35,10 @@ export default function ItemRacao() {
         step="1"
         min="0"
         name="quantity"
-        onChange={ handleInput }
+        onChange={ handleNumber }
         value={ item.quantity }
       />
-      <select name="unit" id="" onChange={ handleInput } value={ item.unit }>
+      <select name="unit" id="" onChange={ handleType } value={ item.unit }>
         {type.map((e) => (
           <option key={ e } value={ e }>{e}</option>
         ))}

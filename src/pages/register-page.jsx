@@ -1,7 +1,7 @@
+import React, { useContext, useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, { useContext, useState } from 'react';
-import { useHistory } from 'react-router-dom';
 import Descartable from '../components/register-components/descataveis/descartaveis';
 import PetFood from '../components/register-components/racao/racao';
 import DonationItemFood from '../components/register-components/donationItemFood';
@@ -16,11 +16,44 @@ export default function RegisterPage() {
     changeBebida,
     sobremesa,
     changeSobremesa,
+    disposables,
+    racaos,
   } = useContext(donationContext);
-  const { donorsList, donorSelected } = useContext(userContext);
+  const { donorsList, donorSelected, setDonorSelected } = useContext(userContext);
   const history = useHistory();
   const [descart, setDescart] = useState(false);
   const [petFood, setPetFood] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [disableNext, setDisableNext] = useState(true);
+  useEffect(() => {
+    // API Request HERE to set donorsList
+    if (!donorSelected.nickname && donorsList[0]) {
+      setDonorSelected({ nickname: donorsList[0].nickname });
+    } else {
+      setDonorSelected({ nickname: 'Anônimo' });
+    }
+    // eslint-disable-next-line
+  }, []);
+  useEffect(() => {
+    if (donorsList.length) {
+      setLoading(false);
+      setDonorSelected({ nickname: donorsList[0].nickname });
+    }
+    // eslint-disable-next-line
+  }, [donorsList]);
+  useEffect(() => {
+    if (!(marmitex
+      || bebida
+      || sobremesa
+      || (disposables.every(({ quantity }) => quantity) && disposables.length)
+      || (racaos.every(({ quantity }) => quantity) && racaos.length))
+    ) {
+      setDisableNext(true);
+    } else {
+      setDisableNext(false);
+    }
+  }, [marmitex, bebida, sobremesa, disposables, racaos]);
+  if (loading) return <h1>Carregando...</h1>;
   const comeBack = (func) => () => func((s) => !s);
   if (descart) {
     return <Descartable comeBack={ comeBack(setDescart) } />;
@@ -32,12 +65,16 @@ export default function RegisterPage() {
     <div className="register-page">
       <div>
         <form className="user-form">
-          <select name="" id="">
+          <select
+            name=""
+            id=""
+            defaultValue={ donorSelected }
+            onChange={ (e) => setDonorSelected(e.target.value) }
+          >
             {donorsList.map(({ nickname: option }) => (
               <option
                 key={ option }
                 value={ option }
-                selected={ donorSelected === option }
               >
                 {option}
               </option>
@@ -83,7 +120,13 @@ export default function RegisterPage() {
       </div>
       <div className="back-next-buttons">
         <button type="button" onClick={ () => history.push('/home') }>Back</button>
-        <button type="button">Next</button>
+        <button
+          type="button"
+          onClick={ () => history.push('/register-finish') }
+          disabled={ disableNext }
+        >
+          Next
+        </button>
       </div>
     </div>
   );

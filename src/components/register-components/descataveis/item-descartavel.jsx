@@ -17,7 +17,11 @@ export default function ItemDescartavel() {
   const [item, setItem] = useState({ ...INITIAL_STATE });
   const handleInput = (e) => {
     const { name, value } = e.target;
-    setItem((s) => ({ ...s, [name]: value }));
+    setItem((s) => ({ ...s, [name]: (value) }));
+  };
+  const handleNumber = (e) => {
+    const { name, value } = e.target;
+    setItem((s) => ({ ...s, [name]: Number(value) }));
   };
   const handleAdd = () => {
     if (item.quantity === '0' || !item.quantity) return null;
@@ -43,7 +47,7 @@ export default function ItemDescartavel() {
         min="0"
         name="quantity"
         className="disposable-item-quantity"
-        onChange={ handleInput }
+        onChange={ handleNumber }
         value={ item.quantity }
       />
       <select

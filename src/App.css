@@ -3,6 +3,19 @@
   padding: 0;
 }
 
+@keyframes go-back {
+  from {
+    transform: translateX(80vw);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+
 .main {
   background-color: #fa902f;
   height: 100vh;
@@ -37,6 +50,7 @@ _:future,
   width: 20vw;
   background-color: white;
   border-radius: 100%;
+  animation: spin 4s infinite linear;
 }
 
 .login-page {
@@ -138,13 +152,13 @@ _:future,
   margin: 0.8em;
 }
 
-.register-page .back-next-buttons {
+.back-next-buttons {
   display: flex;
   justify-content: space-between;
   margin: 2em;
 }
 
-.register-page .back-next-buttons button {
+.back-next-buttons button {
   padding: 1em;
   background: none;
   border: none;
@@ -227,13 +241,28 @@ _:future,
 
 .register-donor-page .user-form .user-form-options {
   display: inline-flex;
-  justify-content: end;
+  justify-content: flex-end;
   flex-wrap: wrap;
 }
 .register-donor-page .user-form [type='submit'] {
   margin-top: 1em;
   width: 50%;
   align-self: center;
+}
+.register-finish-page{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-between;
+}
+.register-finish-page .resume-items .resume-item{
+  display: flex;
+    justify-content: space-between;
+}
+.register-finish-page .resume-items .resume-item .resume-item-quantity{
+  width: 30%;
+  display: flex;
+  justify-content: space-around;
 }
 
 @media only screen and (max-width: 731px) {
@@ -246,7 +275,7 @@ _:future,
   .register-donor-page .user-form .user-form-options {
     display: flex;
     flex-direction: column;
-    justify-content: end;
+    justify-content: flex-end;
   }
   .register-donor-page .user-form .user-form-options label input {
     width: 100%;

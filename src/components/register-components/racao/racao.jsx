@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import PropTypes from 'prop-types';
 import donationContext from '../../../context/contextDonation';
 import ItemRacao from './item-racao';
 import ItemChoose from '../item-choose';
@@ -11,7 +12,7 @@ export default function PetFood({ comeBack }) {
         <h1>Descartavel</h1>
         {racaos.map((racao) => (
           <ItemChoose
-            key={ racao }
+            key={ `${racao.type}${racao.quantity}` }
             handlerDonation={ setRacaos }
             donation={ racao }
           />
@@ -27,3 +28,6 @@ export default function PetFood({ comeBack }) {
     </div>
   );
 }
+PetFood.propTypes = {
+  comeBack: PropTypes.func.isRequired,
+};
