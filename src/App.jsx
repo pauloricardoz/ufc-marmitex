@@ -17,6 +17,7 @@ function App() {
       </header>
       <BrowserRouter>
         <Switch>
+          <Route path="/schedule" component={ Schedule } />
           <Route path="/register-donor" component={ RegisterDonor } />
           <Route path="/register-finish" component={ registerPageFinish } />
           <Route path="/register" component={ RegisterPage } />
