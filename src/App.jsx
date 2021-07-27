@@ -14,7 +14,10 @@ function App() {
     <div className="main">
       <header className="header">
         {/*  <h1>UFC-Marmitex</h1> */}
-        <img src={ logo } alt="logo UFC-Marmitex" className="logo" />
+        <div className="logo-div">
+
+          <img src={ logo } alt="logo UFC-Marmitex" className="logo" />
+        </div>
       </header>
       <BrowserRouter>
         <Switch>
