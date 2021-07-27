@@ -4,10 +4,13 @@
 }
 
 @keyframes go-back {
-  from {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
     transform: translateX(80vw);
   }
-  to {
+  100% {
     transform: translateX(0);
   }
 }
@@ -52,7 +55,9 @@ _:future,
   border-radius: 100%;
   animation: spin 4s infinite linear;
 }
-
+.logo-div{
+  animation: go-back 4s infinite reverse;
+}
 .login-page {
   height: 100vh;
   display: flex;
@@ -81,6 +86,11 @@ _:future,
   align-items: center;
   justify-content: center;
   overflow-y: auto;
+}
+
+.home-page button[disabled]{
+  background-color: #FA901B;
+  color: gray;
 }
 
 .home-page p {
