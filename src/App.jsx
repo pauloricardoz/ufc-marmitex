@@ -7,16 +7,21 @@ import logo from './assets/logo-ufc-small.png';
 import RegisterPage from './pages/register-page';
 import RegisterDonor from './pages/register-Donor';
 import registerPageFinish from './pages/register-finish-page';
+import Schedule from './pages/Schedule';
 
 function App() {
   return (
     <div className="main">
       <header className="header">
         {/*  <h1>UFC-Marmitex</h1> */}
-        <img src={ logo } alt="logo UFC-Marmitex" className="logo" />
+        <div className="logo-div">
+
+          <img src={ logo } alt="logo UFC-Marmitex" className="logo" />
+        </div>
       </header>
       <BrowserRouter>
         <Switch>
+          <Route path="/schedule" component={ Schedule } />
           <Route path="/register-donor" component={ RegisterDonor } />
           <Route path="/register-finish" component={ registerPageFinish } />
           <Route path="/register" component={ RegisterPage } />

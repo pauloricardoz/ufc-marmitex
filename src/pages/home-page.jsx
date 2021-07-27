@@ -14,9 +14,9 @@ export default function HomePage() {
       <button type="button" onClick={ () => history.push('/register') }>
         Registrar doação
       </button>
-      <button type="button">Escala</button>
-      <button type="button">Conferir doações</button>
-      <button type="button">Dar sugestões</button>
+      <button type="button" onClick={ () => history.push('/schedule') }>Escala</button>
+      <button type="button" disabled>Conferir doações</button>
+      <button type="button" disabled>Dar sugestões</button>
     </div>
   );
 }
